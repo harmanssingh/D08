@@ -9,13 +9,21 @@
 
 
 # Body
-def store_to_dict():
-    pass
+def store_to_dict(filename):
+    with open(filename,'r') as f:
+        d={}
+        n=0
+        txt=f.read()
+        names=txt.split()
+        for name in names:
+            d[name] = n
+            n+=1
+    return d
 
 
 ###############################################################################
 def main():  # DO NOT CHANGE BELOW
-    words_dict = store_to_dict()
+    words_dict = store_to_dict('words.txt')
     if "this" in words_dict:
         print("Yup.")
     if "qwertyuiop" in words_dict:

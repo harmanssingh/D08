@@ -17,10 +17,10 @@
     list_3 = []
     list_4 = ["doggy"]
     list_4 = [[[[[[["this"]]]]]]]
-    print capitalize_nested(list_1)
-    print capitalize_nested(list_2)
-    print capitalize_nested(list_3)
-    print capitalize_nested(list_4)
+    print(capitalize_nested(list_1))
+    print(capitalize_nested(list_2))
+    print(capitalize_nested(list_3))
+    print(capitalize_nested(list_4))
 
 # 10_03
 

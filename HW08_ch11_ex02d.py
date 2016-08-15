@@ -28,20 +28,64 @@ def invert_dict_old(d):
 
 
 def invert_dict_new(d):
-    pass
+    inverse = dict()
+    for key in d:
+        val = d[key]
+        inverse[val] = inverse.get(val,[])
+        inverse[val].append(key)
+    return inverse
 
 
 def print_hist_newest(d):
-    pass
+    print_hist_new(d)
 
 ###############################################################################
 # INSERT COMPLETED CODE FROM HW08_ch11_ex02a BELOW: ###########################
 ###############################################################################
+def print_hist_old(h):
+    for c in h:
+        print(c, h[c])
+
+
+def print_hist_new(h):
+    list1=[]
+    for c in h:
+        list1.append(c)
+    list1.sort()
+    for keys in list1:
+        print('{} : {}'.format(repr(keys),repr(h[keys])))
+
 
 
 ###############################################################################
 # INSERT COMPLETED CODE FROM HW08_ch11_ex02a BELOW: ###########################
 ###############################################################################
+def histogram_old(s):
+    d = dict()
+    for c in s:
+        if c not in d:
+            d[c] = 1
+        else:
+            d[c] += 1
+    return d
+
+
+def histogram_new(s):
+    d = dict()
+    for c in s:
+        d[c]=d.get(c,0)
+        d[c]+=1
+    return d
+
+
+def get_pledge_list():
+    with open('pledge.txt','r') as f:
+        wordlist=f.read()
+        words=wordlist.split()
+        return words
+
+
+
 def main():  # DO NOT CHANGE BELOW
     pledge_histogram = histogram_new(get_pledge_list())
     pledge_invert = invert_dict_new(pledge_histogram)
