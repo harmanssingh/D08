@@ -1,6 +1,8 @@
 import random
 import sys
 
+import copy
+
 def generate_random_number(numberofdigits):
     randnum=0
     for num in range(numberofdigits):
@@ -14,16 +16,22 @@ def digits_of_number(num):
         num1=num%10
         num=int(num/10)
         list1.append(num1)
+    list1.reverse()
     return list1
 
 def guess_random_number(randnumlist,guesslist):
     bulls=0
     cows=0
-    for n in range(len(randnumlist)):
-        if guesslist[n] == randnumlist[n]:
+    randnumcheck=copy.deepcopy(randnumlist)
+    guesscheck=copy.deepcopy(guesslist)
+    for n in range(len(randnumcheck)):
+        if guesscheck[n] == randnumcheck[n]:
             bulls+=1
-        elif guesslist[n] in randnumlist:
-            cows+=1
+            randnumcheck[n] = 'checked'
+    for n in range(len(randnumcheck)):
+        if not randnumcheck[n] == 'checked':
+            if guesscheck[n] in randnumcheck:
+                cows+=1
     cowsbulls=(bulls,cows)
     return cowsbulls
 
